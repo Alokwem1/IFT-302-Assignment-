@@ -1,0 +1,234 @@
+:root {
+  --bg-start: #f7efe5;
+  --bg-middle: #fdf8f0;
+  --bg-end: #eff9f8;
+  --card: rgba(255, 255, 255, 0.84);
+  --ink: #102a2d;
+  --heading: #0f172a;
+  --accent: #b45309;
+  --accent-2: #0f766e;
+  --muted: #4b5563;
+  --border: rgba(16, 42, 45, 0.12);
+  --shadow: 0 20px 55px rgba(15, 40, 55, 0.16);
+  --radius: 24px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Serif 4", Georgia, Cambria, "Times New Roman", serif;
+  color: var(--ink);
+  background: linear-gradient(
+    160deg,
+    var(--bg-start) 0%,
+    var(--bg-middle) 52%,
+    var(--bg-end) 100%
+  );
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  width: 360px;
+  height: 360px;
+  top: -110px;
+  right: -90px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 83, 9, 0.18),
+    rgba(180, 83, 9, 0)
+  );
+}
+
+body::after {
+  width: 420px;
+  height: 420px;
+  bottom: -170px;
+  left: -130px;
+  background: radial-gradient(
+    circle,
+    rgba(15, 118, 110, 0.18),
+    rgba(15, 118, 110, 0)
+  );
+}
+
+.page-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  padding: 4.5rem 1.2rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  padding: 2.6rem 2.2rem 2.2rem;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.kicker {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.page-title {
+  margin: 0.55rem 0 0.45rem;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--heading);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.page-title span {
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.subtitle {
+  margin: 0 0 1.35rem;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: #334155;
+  font-size: 0.96rem;
+  letter-spacing: 0.03em;
+}
+
+.avatar-wrap {
+  margin: 0 auto 1.25rem;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 5px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 16px 30px rgba(15, 40, 55, 0.18);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+}
+
+.lead {
+  max-width: 62ch;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 1.09rem;
+  overflow-wrap: break-word;
+}
+
+.footer {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: #64748b;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.8rem;
+  left: 0.8rem;
+  transform: translateY(-160%);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  text-decoration: none;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .page-wrap {
+    padding-top: 4rem;
+  }
+
+  .card {
+    padding: 2.15rem 1.4rem 1.7rem;
+    border-radius: 18px;
+  }
+
+  .avatar-wrap {
+    width: 152px;
+    height: 152px;
+  }
+
+  .lead {
+    font-size: 1.02rem;
+    line-height: 1.68;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-title {
+    font-size: 1.72rem;
+  }
+
+  .subtitle {
+    font-size: 0.88rem;
+  }
+}
